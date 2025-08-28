@@ -142,30 +142,26 @@ export default function Header() {
               /* ✅ Now this will show when NOT logged in */
               <div className="flex items-center space-x-4">
                 <Link
-                  href="/login"
-                  className="text-sm font-medium text-gray-300 hover:text-white transition"
-                >
-                  Sign In
-                </Link>
-                <Link
                   href="/signup"
                   className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded-lg text-sm font-medium transition"
                 >
-                  Sign Up
+                  Join Now
                 </Link>
               </div>
             )}
 
             {/* Cart */}
-            <Link href="/cart" className="relative">
-              <FaShoppingCart
-                size={20}
-                className="text-gray-300 hover:text-blue-400 transition"
-              />
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                2
-              </span>
-            </Link>
+            {isLoggedIn && (
+              <Link href="/cart" className="relative">
+                <FaShoppingCart
+                  size={20}
+                  className="text-gray-300 hover:text-blue-400 transition"
+                />
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  2
+                </span>
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -231,35 +227,30 @@ export default function Header() {
               ) : (
                 <>
                   <Link
-                    href="/login"
-                    className="block text-blue-400 hover:text-blue-300 transition"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Sign In
-                  </Link>
-                  <Link
                     href="/signup"
                     className="block bg-blue-600 hover:bg-blue-700 text-white text-center py-2 rounded-lg font-medium transition"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    Sign Up
+                    Join Now
                   </Link>
                 </>
               )}
             </div>
 
-            <div className="pt-2 border-t border-gray-700 mt-2">
-              <Link
-                href="/cart"
-                className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 relative transition"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <FaShoppingCart /> <span>Cart</span>
-                <span className="absolute -top-1 -right-6 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  2
-                </span>
-              </Link>
-            </div>
+            {isLoggedIn && (
+              <div className="pt-2 border-t border-gray-700 mt-2">
+                <Link
+                  href="/cart"
+                  className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 relative transition"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <FaShoppingCart /> <span>Cart</span>
+                  <span className="absolute -top-1 -right-6 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                    2
+                  </span>
+                </Link>
+              </div>
+            )}
           </nav>
         )}
       </div>
