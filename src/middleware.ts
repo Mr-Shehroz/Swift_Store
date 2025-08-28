@@ -22,6 +22,8 @@ export const config = {
     '/',
     '/my-account',
     '/login',
-    '/signup',
+    '/shop',
+    '/about',
+    '/contact',
   ],
 }
